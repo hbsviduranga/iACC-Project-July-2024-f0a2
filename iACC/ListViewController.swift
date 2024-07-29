@@ -5,7 +5,7 @@
 import UIKit
 
 protocol ItemsService {
-    func loadFriends(completion: @escaping (Result<[ItemViewModel], Error>) -> Void)
+    func loadItems(completion: @escaping (Result<[ItemViewModel], Error>) -> Void)
 }
 
 class ListViewController: UITableViewController {
@@ -66,7 +66,7 @@ class ListViewController: UITableViewController {
 	@objc private func refresh() {
 		refreshControl?.beginRefreshing()
 		if fromFriendsScreen {
-            service?.loadFriends(completion: handleAPIResult)
+            service?.loadItems(completion: handleAPIResult)
 		} else if fromCardsScreen {
 			CardAPI.shared.loadCards { [weak self] result in
 				DispatchQueue.mainAsyncIfNeeded {

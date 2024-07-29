@@ -97,7 +97,7 @@ struct FirendAPIItemsServiceAdapter: ItemsService {
     let cache: FriendsCache
     let select: (Friend) -> Void
     
-    func loadFriends(completion: @escaping (Result<[ItemViewModel], any Error>) -> Void) {
+    func loadItems(completion: @escaping (Result<[ItemViewModel], any Error>) -> Void) {
         api.loadFriends { result in
             DispatchQueue.mainAsyncIfNeeded {
                 completion(result.map {items in
@@ -119,3 +119,4 @@ struct FirendAPIItemsServiceAdapter: ItemsService {
 class NullFriendsCache: FriendsCache {
     override func save(_ newFriends: [Friend]) {}
 }
+
